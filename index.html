@@ -132,7 +132,11 @@
       border-radius: 0 0 5px 5px;
       z-index: 6;
     }
-
+    .demo-gif {
+    width: 150px;
+    height: auto;
+    border-radius: 12px;
+  }
     /* Heart Button */
     .heart-button {
       position: absolute;
@@ -141,14 +145,34 @@
       transform: translate(-50%, -50%);
       cursor: pointer;
       background: transparent;
-      display: flex;
+      display: inline-block;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       animation: heartbeat 1.5s ease-in-out infinite;
       z-index: 10;
     }
+    .demo-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background: rgba(0,0,0,0.1); */
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      animation: fadeOut 5s forwards;
+      animation-delay: 3s;  
+    }
 
+    @keyframes fadeOut {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.8); display: none; }
+  }
+    
     .heart-icon {
       width: clamp(35px, 8vw, 60px);
       height: auto;
@@ -600,6 +624,11 @@
       <div class="envelope-flap">𝓓𝓪𝔀𝓪𝓽-𝓮-𝓦𝓪𝓵𝓲𝓶𝓪</div>
       <div class="heart-button" id="heartButton">
         <img src="https://res.cloudinary.com/m4njtwwh/image/upload/v1782837069/SA_LOGO_y62odv.webp" class="heart-icon" alt="Open">
+        <div class="demo-overlay">
+          <span class="click-text">
+              <img src="https://res.cloudinary.com/m4njtwwh/image/upload/v1783166612/wgpob5JajT_xwg0yv.gif" alt="How to click" class="demo-gif">
+          </span>
+        </div>
       </div>
       <div class="envelope-body">
         <div class="islamic-stamp-text">بسم الله الرحمن الرحيم</div>
@@ -613,13 +642,13 @@
   <div class="hero">
     <video class="hero-video" autoplay muted loop playsinline>
        
-         <source src="https://res.cloudinary.com/m4njtwwh/video/upload/v1783155990/Hero_Video_jivzqn.mp4" type="video/mp4">
+         <source src="https://res.cloudinary.com/m4njtwwh/video/upload/v1783170219/Hero_Video_lkr035.mp4" type="video/mp4">
             <!-- Fallback for browsers that don't support video -->
             Your browser does not support the video tag.
       </video>
        <video class="main-video" autoplay muted loop playsinline>
        
-         <source src="https://res.cloudinary.com/m4njtwwh/video/upload/v1783152400/Main_Video_rzezkm.mp4" type="video/mp4">
+         <source src="https://res.cloudinary.com/m4njtwwh/video/upload/v1783170219/Main_Video_hquwmp.mp4" type="video/mp4">
             <!-- Fallback for browsers that don't support video -->
             Your browser does not support the video tag.
       </video>
@@ -708,33 +737,32 @@
 </audio>
 
 <script>
- const bgMusic = document.getElementById('bgMusic');
-  bgMusic.volume = 0.3;
   
-  // Try autoplay
-  const playPromise = bgMusic.play();
-  
-  if (playPromise !== undefined) {
-    playPromise.catch(function() {
-      // Autoplay blocked - play on any interaction
-      const startMusic = function() {
-        bgMusic.play();
-        ['click', 'touchstart', 'scroll'].forEach(function(e) {
-          document.removeEventListener(e, startMusic);
-        });
-      };
-      
-      ['click', 'touchstart', 'scroll'].forEach(function(e) {
-        document.addEventListener(e, startMusic);
+// ========== BACKGROUND MUSIC ==========
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.volume = 0.3;
+let musicStarted = false;
+
+function startMusic() {
+  if (!musicStarted) {
+    bgMusic.play()
+      .then(() => {
+        musicStarted = true;
+        console.log('🎵 Music started');
+      })
+      .catch((error) => {
+        console.log('Music play failed:', error);
+        // Will retry on next click
       });
-    });
   }
+}
 // Splash Screen Logic
 const splashScreen = document.getElementById('splashScreen');
 const mainContent = document.getElementById('mainContent');
 const heartButton = document.getElementById('heartButton');
 
 function openInvitation() {
+   startMusic(); // ✅ Play music when opening
   splashScreen.classList.add('fade-out');
   mainContent.classList.add('visible');
   setTimeout(() => { splashScreen.style.display = 'none'; }, 1000);
