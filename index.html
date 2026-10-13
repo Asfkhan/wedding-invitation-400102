@@ -7,6 +7,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    @import url('https://googleapis.com');
     /* ========== ENVELOPE SPLASH SCREEN STYLES ========== */
     .splash-screen {
       position: fixed;
@@ -530,7 +531,7 @@
       font-size: 2.8rem;
       font-weight: 600;
       font-family: 'Cormorant Garamond', serif;
-      color: #D2042D ;
+      color: #D2042D;
     }
 
     .time-label {
@@ -984,7 +985,7 @@
     }
 
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: '', serif;
       font-size: 2.4rem;
       font-weight: 500;
       text-align: center;
@@ -998,14 +999,26 @@
       justify-content: center;
       gap: 2rem;
     }
+     .event-item-messeage {
+      background: #fffcf8;
+      border-radius: 0.5rem;
+      margin: 1.5rem 2rem;
+      padding: 1.5rem 2rem;
+      text-align: left;
+      flex: 1 1 180px;
+      border-width: 2px 0 0 2px; /* top/bottom left/right */
+      border-style: solid;
+      border-color: #C2185B;  
+    }
 
     .event-item {
       background: #fffcf8;
-      border-radius: 2rem;
-      padding: 1.5rem 2rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 2rem;
       text-align: center;
       flex: 1 1 180px;
-      border: 1px solid #f4e4d8;
+      padding: 1.5rem 2rem;
+      border: 1px solid #b2825c; 
     }
 
     .event-time {
@@ -1014,8 +1027,19 @@
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
     }
+    
+    .event-item-map{
+      background: #fffcf8;
+      border-radius: 1rem;
+      margin: 1.5rem 2rem;
+      text-align: center;
+      flex: 1 1 180px;
+      padding: 1.5rem 2rem;
+      border: 1px solid skyblue;
+    }
 
     .info-row {
+      text-align: center;
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
@@ -1028,17 +1052,12 @@
       border-radius: 2rem;
       padding: 2rem;
       text-align: center;
+      border: 1px solid skyblue;
     }
-
-    .info-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
+   
 
     .map-btn {
-      background: #2e241f;
+      background: #C2185B;
       color: #fef1e6;
       padding: 0.9rem 1.8rem;
       border-radius: 50px;
@@ -1050,7 +1069,7 @@
     }
 
     .map-btn:hover {
-      background: #584232;
+      background: skyblue;
     }
 
     .rsvp-section {
@@ -1177,18 +1196,20 @@
 <!-- MAIN WEBSITE CONTENT -->
 <div class="main-content" id="mainContent">
   <div class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
+    <!-- <video class="hero-video" autoplay muted loop playsinline>
        
          <source src="https://res.cloudinary.com/m4njtwwh/video/upload/v1789293958/Hero_Video_lkr035.mp4" type="video/mp4">
-            <!-- Fallback for browsers that don't support video -->
             Your browser does not support the video tag.
-      </video>
+      </video> -->
        <video class="main-video" autoplay muted loop playsinline>
        
-         <source src="https://res.cloudinary.com/m4njtwwh/video/upload/v1783170219/Main_Video_hquwmp.mp4" type="video/mp4">
+         <source src="https://res.cloudinary.com/m4njtwwh/video/upload/v1791885158/Main_Video_hquwmp.mp4" type="video/mp4">
             <!-- Fallback for browsers that don't support video -->
             Your browser does not support the video tag.
       </video>
+
+      <!-- :: Venue ::   :: مقام ::
+-->
      <!-- <div class="detail-message">
       <img src="https://res.cloudinary.com/m4njtwwh/image/upload/v1782838907/Detail_Message_BG_gqfojo.jpg" alt="Message">
        
@@ -1256,24 +1277,39 @@
           </div>
         </div>
      </div>
-
-    <div class="timeline">
-      <div class="section-title">Event timeline</div>
+     <div class="timeline">
       <div class="events-grid">
-        <div class="event-item"><div class="event-time">8 PM</div><div class="event-name">Walima</div><div class="event-desc">Religious ceremony</div></div>
-        <div class="event-item"><div class="event-time">9 PM</div><div class="event-name">Dinner</div><div class="event-desc">Traditional dinner</div></div>
+        <div class="event-item-messeage">
+          <div class="event-name">"ومن آياته أنه خلق لكم من أنفسكم أزواجاً لتطمئنوا فيها.."Surah Ar-Rum (30:21)</div>
+          <div class="event-desc"></div>Good Marriage Starts with Good Intentions. Wanting a home of peace, barakah and closeness to Allah, not just a partner.</div>
       </div>
+    </div>
+    <div class="timeline">
+      <div class="section-title">Event & Venue</div>
+      <div class="events-grid">
+        <div class="event-item"><div class="time-number">
+          <image src="https://res.cloudinary.com/m4njtwwh/image/upload/v1791895651/Masjid_myktfk.png" alt="Hall" style="width: 300px; height: auto; margin-top: 0.5rem;"> <br>
+          🕗8:00 pm</div><div class="event-name">📿Religios Ceremony & 🍽️ Dinner</div><div class="event-desc">🛐After Namaz-e-Magrib</div>
+          <div class="time-number">
+            <image src="https://res.cloudinary.com/m4njtwwh/image/upload/v1791895254/Hall_nujcvz.png" alt="Hall" style="width: 150px; height: auto; margin-top: 0.5rem;"> <br>
+            📍American Hall</div>
+        <div class="event-desc">2nd Floor, Sadhna Industrial Estate, near Oshiwara Plaza, off Swami Vivekanand Road, Amrut Nagar, Jogeshwari West, Mumbai, Maharashtra 400102</div>
+        <a href="https://maps.app.goo.gl/virKRDY8UuDvs8637" target="_blank" class="map-btn" id="itineraireBtn">Locate Google Map</a>
+    
+      </div>
+    </div>
+        
     </div>
 
     <div class="info-row">
-      <div class="info-card">
-        <h3>📍 Venue</h3>
-        <p style="font-size:1.2rem; font-weight:500">Jogeshwari</p>
-        <p>Mumbai, India</p>
-        <a href="https://maps.app.goo.gl/virKRDY8UuDvs8637" target="_blank" class="map-btn" id="itineraireBtn">Locate Google Map</a>
-      </div>
+      <div class="event-desc">🌟 With the Best Compliments From 🌟 </br> (Inna lillahi wa inna ilayhi raji'un) </br></br> 
+          <div class="time-number" style="font-size: 20px;">Ikbal Khan (RIP) </br></br> Naimunnisa Khan (RIP) </br></br> Sehzadi Khan (RIP) </br> </br>
+          </div> 
+      <div class="event-desc">🌟Near and Dear🌟</div> </br></br>
+      <div class="time-number" style="font-size: 20px;">Mansoor Khan</br></br>Shagufta Khan</br></br>Yusuf Khan</br></br>Shakira Khan</br></br>Zainnuddin Khan</br> 
+      </div> 
     </div>
-
+    </div>
     <footer>
       Blossom & Oud | Sana & Aseef — 16 Nov 2026
     </footer>
